@@ -763,11 +763,11 @@ body {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   padding: 0;
-  border: 1px solid rgba(0, 151, 224, 0.3);
-  border-radius: 50%;
+  border: 1px solid rgba(0, 151, 224, 0.22);
+  border-radius: 9px;
   color: var(--daikin-blue);
   background: #ffffff;
 }
@@ -775,8 +775,9 @@ body {
 .share-icon {
   position: relative;
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 18px;
+  background: linear-gradient(currentColor, currentColor) center 1px / 1.8px 10px no-repeat;
 }
 
 .share-icon::before {
@@ -784,9 +785,10 @@ body {
   right: 1px;
   bottom: 1px;
   left: 1px;
-  height: 8px;
-  border: 1.6px solid currentColor;
-  border-radius: 3px;
+  height: 9px;
+  border: 1.7px solid currentColor;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
   content: "";
 }
 
@@ -796,10 +798,16 @@ body {
   left: 50%;
   width: 7px;
   height: 7px;
-  border-top: 1.8px solid currentColor;
-  border-left: 1.8px solid currentColor;
+  border-top: 1.9px solid currentColor;
+  border-left: 1.9px solid currentColor;
   content: "";
   transform: translateX(-50%) rotate(45deg);
+}
+
+.share-chat:hover,
+.share-response:hover {
+  border-color: rgba(0, 151, 224, 0.48);
+  background: #f4fbfe;
 }
 
 .query-row {
