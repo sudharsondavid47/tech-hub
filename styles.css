@@ -829,17 +829,6 @@ body {
   border: 1px solid rgba(0, 151, 224, 0.18);
 }
 
-.sources-toggle::before {
-  content: "";
-  display: inline-block;
-  width: 11px;
-  height: 13px;
-  margin-right: 6px;
-  border: 1.8px solid currentColor;
-  border-radius: 2px;
-  vertical-align: -2px;
-}
-
 .feedback-toggle {
   color: #4f616b;
   background: #f3f6f8;
@@ -868,7 +857,7 @@ body {
 .feedback-panel {
   position: absolute;
   bottom: 52px;
-  left: 12px;
+  right: 12px;
   z-index: 4;
   padding: 9px 11px 10px;
   border: 1px solid #d7e0e6;
