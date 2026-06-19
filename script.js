@@ -78,6 +78,8 @@ const sourceViewer = document.querySelector("#source-viewer");
 const viewerBack = document.querySelector("#viewer-back");
 const viewerTitle = document.querySelector("#viewer-title");
 const input = document.querySelector("#airus-input");
+const voiceButton = document.querySelector(".voice-button");
+const voiceStatus = document.querySelector("#voice-status");
 
 function showScreen(name) {
   const screen = screens[name] || screens.products;
@@ -133,7 +135,10 @@ function showReply(message) {
 }
 
 document.querySelectorAll("[data-screen]").forEach((button) => {
-  button.addEventListener("click", () => showScreen(button.dataset.screen));
+  button.addEventListener("click", () => {
+    showScreen(button.dataset.screen);
+    button.blur();
+  });
 });
 
 document.querySelectorAll("[data-message]").forEach((button) => {
@@ -149,8 +154,10 @@ document.querySelectorAll(".response-actions button").forEach((button) => {
   });
 });
 
-document.querySelector(".voice-button").addEventListener("click", (event) => {
-  event.currentTarget.classList.toggle("listening");
+voiceButton.addEventListener("click", () => {
+  const isListening = voiceButton.classList.toggle("listening");
+  voiceStatus.hidden = !isListening;
+  input.placeholder = isListening ? "Listening..." : "Ask anything";
 });
 
 sourcesToggle.addEventListener("click", () => {

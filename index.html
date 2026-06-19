@@ -21,6 +21,7 @@
                 <h1>Daikin Technical Assistant</h1>
                 <p>Powered by AIRUS</p>
               </div>
+              <p class="assistant-intro">Get cited answers from Tech Hub documents, manuals, and service references.</p>
             </div>
 
             <div class="assistant-card">
@@ -29,28 +30,40 @@
               </div>
 
               <div class="context-row" aria-label="Assistant capabilities">
-                <span>Error codes</span>
-                <span>Model lookup</span>
-                <span>Service steps</span>
+                <span>Codes</span>
+                <span>Models</span>
+                <span>Service</span>
               </div>
             </div>
 
             <div class="prompt-grid" aria-label="Suggested assistant prompts">
               <button type="button" data-message="Error code 01">
-                <strong>Error code 01</strong>
-                <span>Explain likely causes</span>
+                <i class="prompt-icon code-icon" aria-hidden="true"></i>
+                <span>
+                  <strong>Code 01</strong>
+                  <em>Likely causes</em>
+                </span>
               </button>
               <button type="button" data-message="What is a VRV system?">
-                <strong>What is VRV?</strong>
-                <span>Explain the system</span>
+                <i class="prompt-icon system-icon" aria-hidden="true"></i>
+                <span>
+                  <strong>VRV</strong>
+                  <em>Quick explain</em>
+                </span>
               </button>
               <button type="button" data-message="Find a manual">
-                <strong>Find a manual</strong>
-                <span>Use model number</span>
+                <i class="prompt-icon manual-icon" aria-hidden="true"></i>
+                <span>
+                  <strong>Manuals</strong>
+                  <em>Find by model</em>
+                </span>
               </button>
               <button type="button" data-message="Parts lookup">
-                <strong>Parts lookup</strong>
-                <span>Identify part details</span>
+                <i class="prompt-icon parts-icon" aria-hidden="true"></i>
+                <span>
+                  <strong>Parts</strong>
+                  <em>Lookup details</em>
+                </span>
               </button>
             </div>
 
@@ -76,7 +89,7 @@
                 <div class="answer-meta">
                   <div class="source-strip" aria-label="Relevant sources">
                     <button id="sources-toggle" class="sources-toggle" type="button" aria-expanded="false" aria-controls="sources-panel">
-                      Sources
+                      4 Sources
                     </button>
                   </div>
                   <div class="response-actions" aria-label="Rate assistant response">
@@ -154,6 +167,11 @@
               <div class="doc-brand">DAIKIN</div>
             </div>
           </section>
+
+          <div id="voice-status" class="voice-status" hidden>
+            <span aria-hidden="true"></span>
+            Listening for a service question
+          </div>
 
           <form id="airus-form" class="composer">
             <label class="sr-only" for="airus-input">Ask Daikin Technical Assistant</label>
