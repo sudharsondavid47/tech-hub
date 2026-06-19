@@ -93,12 +93,12 @@ const cannedReplies = {
       "Confirm compatibility before ordering or replacing components.",
     ],
   },
-  "Find service information for RXYQ12TAYDU": {
-    title: "RXYQ12TAYDU service information",
+  "Find service information for FXTQ60TAVJUAAA": {
+    title: "FXTQ60TAVJUAAA service information",
     summary:
-      "AIRUS identified RXYQ12TAYDU as a Daikin VRV outdoor unit and matched the available service information to this model.",
+      "AIRUS identified FXTQ60TAVJUAAA as a Daikin heat pump air handler and matched the available service information to this model.",
     points: [
-      "Review the VRV outdoor-unit service manual for model-specific procedures.",
+      "Review the air-handler service manual for model-specific procedures.",
       "Confirm the serial number before applying production-specific updates.",
       "Use the model match to narrow compatible parts and fault references.",
     ],
@@ -248,7 +248,7 @@ scanQuestionForm.addEventListener("submit", (event) => {
   const question = scanQuestionInput.value.trim();
   if (!question) return;
   closeCameraFlow();
-  showReply(`${question} for RXYQ12TAYDU`);
+  showReply(`${question} for FXTQ60TAVJUAAA`);
   scanQuestionInput.value = "";
 });
 
