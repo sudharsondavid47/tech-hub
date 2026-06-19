@@ -304,8 +304,7 @@ body {
   text-align: center;
 }
 
-.scan-action,
-.scan-done {
+.scan-action {
   width: 100%;
   min-height: 42px;
   border: 1px solid transparent;
@@ -370,25 +369,24 @@ body {
   line-height: 1.4;
 }
 
-.scan-details {
-  display: grid;
-  gap: 8px;
-  margin: 17px 0;
-  text-align: left;
+.scan-identifiers {
+  margin: 13px 0 15px;
+  color: #53717c;
+  font-size: clamp(10px, 2.65vw, 13px);
+  line-height: 1.55;
+  text-align: center;
 }
 
-.scan-details div {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 12px;
-  border: 1px solid #dbe8ed;
-  border-radius: 11px;
-  background: #ffffff;
+.scan-identifiers strong {
+  color: #193c4b;
+  font-weight: 800;
 }
 
-.scan-details dt { color: #69818a; font-size: clamp(11px, 2.8vw, 13px); }
-.scan-details dd { margin: 0; color: #163c4c; font-size: clamp(11px, 2.8vw, 13px); font-weight: 750; }
+.scan-identifiers i {
+  margin: 0 3px;
+  color: #8aabb6;
+  font-style: normal;
+}
 
 .scan-question-label {
   color: #193c4b;

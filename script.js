@@ -126,7 +126,6 @@ const cameraStage = document.querySelector("#camera-stage");
 const scanResults = document.querySelector("#scan-results");
 const cameraCancel = document.querySelector("#camera-cancel");
 const scanNameplate = document.querySelector("#scan-nameplate");
-const scanDone = document.querySelector("#scan-done");
 const scanQuestionForm = document.querySelector("#scan-question-form");
 const scanQuestionInput = document.querySelector("#scan-question-input");
 const voiceButton = document.querySelector(".voice-button");
@@ -237,8 +236,6 @@ scanNameplate.addEventListener("click", () => {
   cameraStage.hidden = true;
   scanResults.hidden = false;
 });
-
-scanDone.addEventListener("click", closeCameraFlow);
 
 scanQuestionForm.addEventListener("submit", (event) => {
   event.preventDefault();
