@@ -293,6 +293,10 @@ body {
   flex-direction: column;
 }
 
+.camera-stage[hidden] {
+  display: none;
+}
+
 .camera-stage > p {
   margin: 8px 0;
   color: #55717c;
