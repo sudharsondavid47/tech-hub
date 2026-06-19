@@ -116,6 +116,18 @@ const sourcesToggle = document.querySelector("#sources-toggle");
 const sourcesPanel = document.querySelector("#sources-panel");
 const feedbackToggle = document.querySelector("#feedback-toggle");
 const feedbackPanel = document.querySelector("#feedback-panel");
+const shareResponse = document.querySelector("#share-response");
+const shareChat = document.querySelector("#share-chat");
+const supportSheet = document.querySelector("#support-sheet");
+const supportSheetClose = document.querySelector("#support-sheet-close");
+const supportCancel = document.querySelector("#support-cancel");
+const supportForm = document.querySelector("#support-form");
+const supportNote = document.querySelector("#support-note");
+const supportSummaryTitle = document.querySelector("#support-summary-title");
+const supportQuestion = document.querySelector("#support-question");
+const supportResponse = document.querySelector("#support-response");
+const supportEquipment = document.querySelector("#support-equipment");
+const supportToast = document.querySelector("#support-toast");
 const sourceViewer = document.querySelector("#source-viewer");
 const viewerBack = document.querySelector("#viewer-back");
 const viewerTitle = document.querySelector("#viewer-title");
@@ -132,6 +144,41 @@ const scanVoiceButton = document.querySelector(".scan-voice-button");
 const voiceButton = document.querySelector(".voice-button");
 const voiceStatus = document.querySelector("#voice-status");
 const chatPanel = document.querySelector(".chat-panel");
+const phone = document.querySelector(".phone");
+let supportToastTimeout;
+
+function updateSupportPreview(scope) {
+  document.querySelectorAll("[data-share-scope]").forEach((button) => {
+    button.classList.toggle("selected", button.dataset.shareScope === scope);
+  });
+  supportSummaryTitle.textContent =
+    scope === "chat"
+      ? "The entire conversation and supporting technical context will be shared with the support team."
+      : "This response and its supporting technical context will be shared with the support team.";
+  supportQuestion.textContent = queryText.textContent || "Current technical question";
+  supportResponse.textContent =
+    scope === "chat"
+      ? `${answerTitle.textContent || "Assistant response"} and conversation history`
+      : answerTitle.textContent || "Assistant response";
+  supportEquipment.hidden = !queryText.textContent.includes("FXTQ60TAVJUAAA");
+}
+
+function openSupportSheet(scope) {
+  if (conversation.hidden) return;
+  sourcesPanel.hidden = true;
+  feedbackPanel.hidden = true;
+  sourcesToggle.setAttribute("aria-expanded", "false");
+  feedbackToggle.setAttribute("aria-expanded", "false");
+  updateSupportPreview(scope);
+  supportSheet.hidden = false;
+  phone.classList.add("support-open");
+}
+
+function closeSupportSheet() {
+  supportSheet.hidden = true;
+  supportNote.value = "";
+  phone.classList.remove("support-open");
+}
 
 function showScreen(name) {
   const screen = screens[name] || screens.products;
@@ -145,6 +192,8 @@ function showScreen(name) {
     conversation.hidden = true;
     sourceViewer.hidden = true;
     input.value = "";
+    closeSupportSheet();
+    supportToast.hidden = true;
     chatPanel.classList.remove("has-conversation");
     screenImage.hidden = false;
   }
@@ -197,6 +246,7 @@ function showReply(message) {
   chatPanel.classList.add("has-conversation");
   sourcesPanel.hidden = true;
   feedbackPanel.hidden = true;
+  closeSupportSheet();
   sourceViewer.hidden = true;
   sourcesToggle.setAttribute("aria-expanded", "false");
   feedbackToggle.setAttribute("aria-expanded", "false");
@@ -273,6 +323,29 @@ feedbackToggle.addEventListener("click", () => {
   sourcesPanel.hidden = true;
   feedbackToggle.setAttribute("aria-expanded", String(!isOpen));
   sourcesToggle.setAttribute("aria-expanded", "false");
+});
+
+shareResponse.addEventListener("click", () => openSupportSheet("response"));
+
+shareChat.addEventListener("click", () => openSupportSheet("chat"));
+
+document.querySelectorAll("[data-share-scope]").forEach((button) => {
+  button.addEventListener("click", () => updateSupportPreview(button.dataset.shareScope));
+});
+
+supportSheetClose.addEventListener("click", closeSupportSheet);
+supportCancel.addEventListener("click", closeSupportSheet);
+
+supportForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const sentScope = document.querySelector("[data-share-scope].selected").dataset.shareScope;
+  closeSupportSheet();
+  supportToast.textContent = `Sent ${sentScope === "chat" ? "conversation" : "response"} to Support · Case #TH-2048`;
+  supportToast.hidden = false;
+  window.clearTimeout(supportToastTimeout);
+  supportToastTimeout = window.setTimeout(() => {
+    supportToast.hidden = true;
+  }, 4200);
 });
 
 document.querySelectorAll(".sources-panel button").forEach((button) => {
