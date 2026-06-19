@@ -777,7 +777,6 @@ body {
   display: block;
   width: 17px;
   height: 18px;
-  background: linear-gradient(currentColor, currentColor) center 1px / 1.8px 10px no-repeat;
 }
 
 .share-icon::before {
@@ -796,12 +795,12 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 7px;
-  height: 7px;
-  border-top: 1.9px solid currentColor;
-  border-left: 1.9px solid currentColor;
+  width: 10px;
+  height: 11px;
   content: "";
-  transform: translateX(-50%) rotate(45deg);
+  background: currentColor;
+  clip-path: polygon(50% 0, 100% 42%, 66% 42%, 66% 100%, 34% 100%, 34% 42%, 0 42%);
+  transform: translateX(-50%);
 }
 
 .share-chat:hover,
