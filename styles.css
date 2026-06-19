@@ -360,8 +360,7 @@ body {
 }
 
 .scan-kicker,
-.scan-description,
-.scan-question-label {
+.scan-description {
   margin: 0;
 }
 
@@ -400,35 +399,6 @@ body {
   margin: 0 3px;
   color: var(--daikin-blue);
   font-style: normal;
-}
-
-.scan-question-label {
-  color: var(--daikin-blue);
-  font-size: clamp(12px, 3.15vw, 15px);
-  font-weight: 400;
-  text-align: left;
-}
-
-.scan-prompts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-  margin: 8px 0 11px;
-}
-
-.scan-prompts button {
-  display: grid;
-  min-height: 58px;
-  place-items: center;
-  border: 1px solid rgba(0, 151, 224, 0.28);
-  border-radius: 12px;
-  color: var(--daikin-blue-dark);
-  background: #f4fbfe;
-  font-size: clamp(10px, 2.65vw, 12px);
-  line-height: 1.18;
-  font-weight: 400;
-  text-align: center;
-  padding: 7px 5px;
 }
 
 .scan-question-form {
