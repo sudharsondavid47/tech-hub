@@ -988,32 +988,27 @@ body {
 .sources-panel i {
   position: relative;
   flex: 0 0 auto;
-  width: 14px;
-  height: 14px;
-  border-bottom: 2px solid currentColor;
+  width: 16px;
+  height: 10px;
+  border: 1.8px solid currentColor;
+  border-radius: 50% / 65%;
   color: var(--daikin-blue);
 }
 
 .sources-panel i::before {
-  content: "";
   position: absolute;
-  left: 6px;
-  top: 0;
-  width: 2px;
-  height: 10px;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  content: "";
   background: currentColor;
+  transform: translate(-50%, -50%);
 }
 
 .sources-panel i::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 6px;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
+  display: none;
 }
 
 .source-viewer {
