@@ -915,9 +915,6 @@ body {
 }
 
 .answer-meta {
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -925,7 +922,6 @@ body {
   margin-top: 16px;
   padding-top: 10px;
   border-top: 1px solid var(--line);
-  background: #ffffff;
 }
 
 .source-strip {
