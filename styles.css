@@ -52,6 +52,20 @@ body {
   background: rgb(0 151 224);
 }
 
+.dynamic-island {
+  position: absolute;
+  top: 1.75%;
+  left: 50%;
+  z-index: 13;
+  width: 47%;
+  height: 3.65%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #000000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
+
 .screen {
   display: block;
   width: 100%;
@@ -910,7 +924,7 @@ body {
   min-height: 38px;
   padding: 0 9px;
   border-radius: 10px;
-  color: var(--daikin-blue);
+  color: var(--ink);
   font-size: clamp(11px, 2.9vw, 13px);
   font-weight: 400;
   text-align: left;
@@ -938,6 +952,7 @@ body {
   width: 14px;
   height: 14px;
   border-bottom: 2px solid currentColor;
+  color: var(--daikin-blue);
 }
 
 .sources-panel i::before {
