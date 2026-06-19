@@ -145,17 +145,57 @@ body {
 }
 
 .assistant-orb {
+  position: relative;
   display: grid;
   place-items: center;
   grid-row: span 2;
   width: clamp(40px, 10vw, 52px);
   aspect-ratio: 1;
   border-radius: 17px;
-  color: #ffffff;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, #e9fbff 0%, #d4f5f1 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 136, 184, 0.14),
+    0 8px 18px rgba(0, 133, 181, 0.16);
+}
+
+.assistant-orb::before {
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  content: "";
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 16%, rgba(255, 255, 255, 0) 66%);
+}
+
+.sparkle {
+  position: absolute;
+  display: block;
   background: linear-gradient(135deg, var(--daikin-blue), var(--mint));
-  font-weight: 700;
-  font-size: clamp(14px, 3.6vw, 18px);
-  box-shadow: 0 8px 18px rgba(0, 158, 219, 0.26);
+}
+
+.sparkle-main {
+  width: 46%;
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  filter: drop-shadow(0 2px 3px rgba(0, 132, 180, 0.18));
+}
+
+.sparkle-small {
+  top: 18%;
+  right: 18%;
+  width: 18%;
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+}
+
+.sparkle-dot {
+  right: 20%;
+  bottom: 21%;
+  width: 9%;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 
 .message {
