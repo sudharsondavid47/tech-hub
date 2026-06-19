@@ -84,6 +84,8 @@ const answerSummary = document.querySelector("#answer-summary");
 const answerList = document.querySelector("#answer-list");
 const sourcesToggle = document.querySelector("#sources-toggle");
 const sourcesPanel = document.querySelector("#sources-panel");
+const feedbackToggle = document.querySelector("#feedback-toggle");
+const feedbackPanel = document.querySelector("#feedback-panel");
 const sourceViewer = document.querySelector("#source-viewer");
 const viewerBack = document.querySelector("#viewer-back");
 const viewerTitle = document.querySelector("#viewer-title");
@@ -95,8 +97,11 @@ const scanResults = document.querySelector("#scan-results");
 const cameraCancel = document.querySelector("#camera-cancel");
 const scanNameplate = document.querySelector("#scan-nameplate");
 const scanDone = document.querySelector("#scan-done");
+const scanQuestionForm = document.querySelector("#scan-question-form");
+const scanQuestionInput = document.querySelector("#scan-question-input");
 const voiceButton = document.querySelector(".voice-button");
 const voiceStatus = document.querySelector("#voice-status");
+const chatPanel = document.querySelector(".chat-panel");
 
 function showScreen(name) {
   const screen = screens[name] || screens.products;
@@ -110,6 +115,7 @@ function showScreen(name) {
     conversation.hidden = true;
     sourceViewer.hidden = true;
     input.value = "";
+    chatPanel.classList.remove("has-conversation");
     screenImage.hidden = false;
   }
 }
@@ -158,9 +164,12 @@ function showReply(message) {
     }),
   );
   conversation.hidden = false;
+  chatPanel.classList.add("has-conversation");
   sourcesPanel.hidden = true;
+  feedbackPanel.hidden = true;
   sourceViewer.hidden = true;
   sourcesToggle.setAttribute("aria-expanded", "false");
+  feedbackToggle.setAttribute("aria-expanded", "false");
   conversation.scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
 
@@ -175,11 +184,9 @@ document.querySelectorAll("[data-message]").forEach((button) => {
   button.addEventListener("click", () => showReply(button.dataset.message));
 });
 
-document.querySelectorAll(".response-actions button").forEach((button) => {
+document.querySelectorAll(".feedback-panel button").forEach((button) => {
   button.addEventListener("click", () => {
-    document
-      .querySelectorAll(".response-actions button")
-      .forEach((item) => item.classList.remove("selected"));
+    document.querySelectorAll(".feedback-panel button").forEach((item) => item.classList.remove("selected"));
     button.classList.add("selected");
   });
 });
@@ -203,6 +210,15 @@ scanNameplate.addEventListener("click", () => {
 
 scanDone.addEventListener("click", closeCameraFlow);
 
+scanQuestionForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const question = scanQuestionInput.value.trim();
+  if (!question) return;
+  closeCameraFlow();
+  showReply(`${question} for RXYQ12TAYDU`);
+  scanQuestionInput.value = "";
+});
+
 document.querySelectorAll("[data-nameplate-message]").forEach((button) => {
   button.addEventListener("click", () => {
     closeCameraFlow();
@@ -213,7 +229,17 @@ document.querySelectorAll("[data-nameplate-message]").forEach((button) => {
 sourcesToggle.addEventListener("click", () => {
   const isOpen = !sourcesPanel.hidden;
   sourcesPanel.hidden = isOpen;
+  feedbackPanel.hidden = true;
   sourcesToggle.setAttribute("aria-expanded", String(!isOpen));
+  feedbackToggle.setAttribute("aria-expanded", "false");
+});
+
+feedbackToggle.addEventListener("click", () => {
+  const isOpen = !feedbackPanel.hidden;
+  feedbackPanel.hidden = isOpen;
+  sourcesPanel.hidden = true;
+  feedbackToggle.setAttribute("aria-expanded", String(!isOpen));
+  sourcesToggle.setAttribute("aria-expanded", "false");
 });
 
 document.querySelectorAll(".sources-panel button").forEach((button) => {

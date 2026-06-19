@@ -86,10 +86,7 @@
                       4 Sources
                     </button>
                   </div>
-                  <div class="response-actions" aria-label="Rate assistant response">
-                    <button type="button" aria-label="Helpful response">Helpful</button>
-                    <button type="button" aria-label="Not helpful response">Not helpful</button>
-                  </div>
+                  <button id="feedback-toggle" class="feedback-toggle" type="button" aria-expanded="false" aria-controls="feedback-panel">Feedback</button>
                 </div>
 
                 <div id="sources-panel" class="sources-panel" hidden>
@@ -109,6 +106,17 @@
                     <span>EM-RXYQ_TAYCU.pdf</span>
                     <i aria-hidden="true"></i>
                   </button>
+                </div>
+
+                <div id="feedback-panel" class="feedback-panel" aria-label="Rate assistant response" hidden>
+                  <p>How was this answer?</p>
+                  <div>
+                    <button type="button" aria-label="Very dissatisfied">&#128545;</button>
+                    <button type="button" aria-label="Dissatisfied">&#128577;</button>
+                    <button type="button" aria-label="Neutral">&#128528;</button>
+                    <button type="button" aria-label="Satisfied">&#128578;</button>
+                    <button type="button" aria-label="Very satisfied">&#129321;</button>
+                  </div>
                 </div>
               </article>
             </div>
@@ -157,6 +165,11 @@
                 <button type="button" data-nameplate-message="What error codes apply to RXYQ12TAYDU?">Error codes</button>
                 <button type="button" data-nameplate-message="Find parts for RXYQ12TAYDU">Parts lookup</button>
               </div>
+              <form id="scan-question-form" class="scan-question-form">
+                <label class="sr-only" for="scan-question-input">Ask a question about RXYQ12TAYDU</label>
+                <input id="scan-question-input" autocomplete="off" placeholder="Ask about this unit" />
+                <button type="submit" aria-label="Ask about scanned unit"><span aria-hidden="true"></span></button>
+              </form>
               <button id="scan-done" class="scan-done" type="button">Continue in assistant</button>
             </div>
           </section>

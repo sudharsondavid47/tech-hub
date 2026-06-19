@@ -40,6 +40,18 @@ body {
   box-shadow: 0 18px 50px rgba(15, 23, 42, 0.22);
 }
 
+.phone::after {
+  position: absolute;
+  top: 1.2%;
+  left: 25.5%;
+  z-index: 12;
+  width: 49%;
+  height: 6.2%;
+  content: "";
+  pointer-events: none;
+  background: var(--daikin-blue);
+}
+
 .screen {
   display: block;
   width: 100%;
@@ -93,6 +105,16 @@ body {
   overflow: auto;
   background:
     linear-gradient(180deg, #f4fbfe 0%, #f8fbfd 34%, #ffffff 100%);
+}
+
+.chat-panel.has-conversation {
+  padding-top: 4%;
+}
+
+.chat-panel.has-conversation .assistant-hero,
+.chat-panel.has-conversation .assistant-card,
+.chat-panel.has-conversation .prompt-grid {
+  display: none;
 }
 
 .native-airus.camera-active .chat-panel,
@@ -374,6 +396,52 @@ body {
   padding: 0 13px;
 }
 
+.scan-question-form {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 41px;
+  margin: 0 0 10px;
+  padding: 4px 5px 4px 12px;
+  border: 1px solid #cfe1e8;
+  border-radius: 13px;
+  background: #ffffff;
+}
+
+.scan-question-form input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  color: #163c4c;
+  background: transparent;
+  font: 600 clamp(11px, 2.85vw, 14px) / 1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.scan-question-form input::placeholder {
+  color: #8a9da5;
+}
+
+.scan-question-form button {
+  position: relative;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #a8c8d5;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.scan-question-form button span {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  width: 14px;
+  aspect-ratio: 1;
+  background: var(--daikin-blue-dark);
+  clip-path: polygon(4% 7%, 96% 50%, 4% 93%, 29% 55%, 4% 7%);
+}
+
 .assistant-hero {
   display: grid;
   gap: 12px;
@@ -604,7 +672,7 @@ body {
 }
 
 .conversation {
-  margin-top: 18px;
+  margin-top: 0;
 }
 
 .query-row {
@@ -628,8 +696,9 @@ body {
 }
 
 .answer-card {
+  position: relative;
   margin-top: 14px;
-  padding: 15px;
+  padding: 12px;
   border: 1px solid var(--line);
   border-radius: 20px;
   background: #ffffff;
@@ -640,7 +709,7 @@ body {
   display: flex;
   align-items: center;
   gap: 11px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .assistant-mini {
@@ -678,7 +747,7 @@ body {
 }
 
 .answer-card h3 {
-  margin: 16px 0 8px;
+  margin: 11px 0 6px;
   color: #20323a;
   font-size: clamp(13px, 3.35vw, 16px);
   line-height: 1.2;
@@ -686,7 +755,7 @@ body {
 
 .answer-card ul {
   display: grid;
-  gap: 8px;
+  gap: 5px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -697,7 +766,7 @@ body {
   padding-left: 20px;
   color: #263940;
   font-size: clamp(12px, 3.15vw, 15px);
-  line-height: 1.42;
+  line-height: 1.32;
 }
 
 .answer-card li::before {
@@ -717,26 +786,18 @@ body {
   justify-content: space-between;
   gap: 8px;
   margin-top: 16px;
-  padding-top: 13px;
+  padding-top: 10px;
   border-top: 1px solid var(--line);
 }
 
-.source-strip,
-.response-actions {
+.source-strip {
   display: flex;
   align-items: center;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.source-strip::-webkit-scrollbar,
-.response-actions::-webkit-scrollbar {
-  display: none;
 }
 
 .source-strip button,
-.response-actions button {
+.feedback-toggle {
   flex: 0 0 auto;
   min-height: 30px;
   padding: 0 10px;
@@ -762,51 +823,71 @@ body {
   vertical-align: -2px;
 }
 
-.response-actions button {
-  min-width: 34px;
-  color: transparent;
-  background: #f2f5f7;
-  border: 1px solid #dce4e8;
-  font-size: 0;
-}
-
-.response-actions button::before {
+.feedback-toggle {
   color: #4f616b;
-  font-size: 15px;
-  line-height: 1;
+  background: #f3f6f8;
+  border: 1px solid #dce4e8;
 }
 
-.response-actions button[aria-label="Helpful response"]::before {
-  content: "↑";
-}
-
-.response-actions button[aria-label="Not helpful response"]::before {
-  content: "↓";
-}
-
-.response-actions button.selected {
-  background: var(--daikin-blue);
-  border-color: var(--daikin-blue);
-}
-
-.response-actions button.selected::before {
-  color: #ffffff;
-}
-
-.response-actions button:focus-visible,
+.feedback-toggle:focus-visible,
 .source-strip button:focus-visible {
   outline: 3px solid rgba(0, 158, 219, 0.45);
   outline-offset: 2px;
 }
 
 .sources-panel {
-  margin: 11px 0 0 auto;
+  position: absolute;
+  right: 12px;
+  bottom: 52px;
+  z-index: 4;
   width: min(86%, 260px);
   padding: 8px;
   border-radius: 16px;
   background: #eef3f7;
   border: 1px solid #d7e0e6;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+}
+
+.feedback-panel {
+  position: absolute;
+  bottom: 52px;
+  left: 12px;
+  z-index: 4;
+  padding: 9px 11px 10px;
+  border: 1px solid #d7e0e6;
+  border-radius: 15px;
+  background: #eef3f7;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+}
+
+.feedback-panel p {
+  margin: 0 0 7px;
+  color: #42606c;
+  font-size: clamp(10px, 2.65vw, 12px);
+  font-weight: 750;
+}
+
+.feedback-panel > div {
+  display: flex;
+  gap: 6px;
+}
+
+.feedback-panel button {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: #ffffff;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.feedback-panel button.selected {
+  border-color: var(--daikin-blue);
+  box-shadow: 0 0 0 2px rgba(0, 158, 219, 0.16);
 }
 
 .sources-panel button {
