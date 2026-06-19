@@ -384,7 +384,7 @@ body {
 
 .scan-details {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 7px;
   margin: 12px 0 15px;
   text-align: left;
@@ -392,14 +392,14 @@ body {
 
 .scan-details div {
   min-width: 0;
-  padding: 8px 9px;
+  padding: 7px 8px;
   border: 1px solid #d4e5eb;
   border-radius: 8px;
   background: #ffffff;
 }
 
 .scan-details .scan-detail-wide {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 .scan-details dt,
@@ -418,7 +418,7 @@ body {
   margin-top: 3px;
   overflow-wrap: anywhere;
   color: var(--ink);
-  font-size: clamp(10px, 2.65vw, 13px);
+  font-size: clamp(9px, 2.45vw, 12px);
   font-weight: 600;
   line-height: 1.25;
 }
