@@ -22,6 +22,36 @@ const screens = {
 };
 
 const cannedReplies = {
+  "Help diagnose a unit fault": {
+    title: "Fault diagnosis",
+    summary:
+      "Start with the active fault code, unit model, and the conditions when the fault occurred. AIRUS can help narrow the next checks.",
+    points: [
+      "Confirm the exact error code and whether it repeats after a reset.",
+      "Record operating pressures, temperatures, and any abnormal sounds.",
+      "Check recent service work, wiring changes, and control communication.",
+    ],
+  },
+  "Which operating readings should I check?": {
+    title: "Operating data check",
+    summary:
+      "Use a stable operating condition and compare readings with the model-specific service information before adjusting the system.",
+    points: [
+      "Capture suction and discharge pressure with the system stabilized.",
+      "Record indoor and outdoor air temperatures, plus line temperatures.",
+      "Check compressor frequency, fan operation, and active fault history.",
+    ],
+  },
+  "Find the service procedure": {
+    title: "Service procedure lookup",
+    summary:
+      "Enter the exact model number to locate the matched service procedure, wiring diagram, and repair guidance.",
+    points: [
+      "Use the full model number from the equipment nameplate.",
+      "Select the fault, component, or maintenance task you are working on.",
+      "Confirm required safety steps and compatible replacement parts.",
+    ],
+  },
   "Error code 01": {
     title: "Error code 01",
     summary:
