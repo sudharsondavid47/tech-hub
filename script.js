@@ -63,6 +63,16 @@ const cannedReplies = {
       "Confirm compatibility before ordering or replacing components.",
     ],
   },
+  "Find service information for RXYQ12TAYDU": {
+    title: "RXYQ12TAYDU service information",
+    summary:
+      "AIRUS identified RXYQ12TAYDU as a Daikin VRV outdoor unit and matched the available service information to this model.",
+    points: [
+      "Review the VRV outdoor-unit service manual for model-specific procedures.",
+      "Confirm the serial number before applying production-specific updates.",
+      "Use the model match to narrow compatible parts and fault references.",
+    ],
+  },
 };
 
 const screenImage = document.querySelector("#screen");
@@ -79,6 +89,12 @@ const viewerBack = document.querySelector("#viewer-back");
 const viewerTitle = document.querySelector("#viewer-title");
 const input = document.querySelector("#airus-input");
 const cameraButton = document.querySelector(".camera-button");
+const cameraFlow = document.querySelector("#camera-flow");
+const cameraStage = document.querySelector("#camera-stage");
+const scanResults = document.querySelector("#scan-results");
+const cameraCancel = document.querySelector("#camera-cancel");
+const scanNameplate = document.querySelector("#scan-nameplate");
+const scanDone = document.querySelector("#scan-done");
 const voiceButton = document.querySelector(".voice-button");
 const voiceStatus = document.querySelector("#voice-status");
 
@@ -90,11 +106,24 @@ function showScreen(name) {
   nativeAirus.hidden = !isAirus;
   screenImage.hidden = isAirus;
   if (name !== "airus") {
+    closeCameraFlow();
     conversation.hidden = true;
     sourceViewer.hidden = true;
     input.value = "";
     screenImage.hidden = false;
   }
+}
+
+function openCameraFlow() {
+  cameraFlow.hidden = false;
+  cameraStage.hidden = false;
+  scanResults.hidden = true;
+  nativeAirus.classList.add("camera-active");
+}
+
+function closeCameraFlow() {
+  cameraFlow.hidden = true;
+  nativeAirus.classList.remove("camera-active");
 }
 
 function showReply(message) {
@@ -162,8 +191,23 @@ voiceButton.addEventListener("click", () => {
 });
 
 cameraButton.addEventListener("click", () => {
-  input.value = "Photo attached";
-  input.focus();
+  openCameraFlow();
+});
+
+cameraCancel.addEventListener("click", closeCameraFlow);
+
+scanNameplate.addEventListener("click", () => {
+  cameraStage.hidden = true;
+  scanResults.hidden = false;
+});
+
+scanDone.addEventListener("click", closeCameraFlow);
+
+document.querySelectorAll("[data-nameplate-message]").forEach((button) => {
+  button.addEventListener("click", () => {
+    closeCameraFlow();
+    showReply(button.dataset.nameplateMessage);
+  });
 });
 
 sourcesToggle.addEventListener("click", () => {

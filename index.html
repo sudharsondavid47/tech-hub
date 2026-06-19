@@ -114,6 +114,53 @@
             </div>
           </section>
 
+          <section id="camera-flow" class="camera-flow" aria-label="Equipment nameplate scanner" hidden>
+            <header class="camera-flow-header">
+              <button id="camera-cancel" class="camera-close" type="button" aria-label="Close camera"></button>
+              <div>
+                <p>Daikin Technical Assistant</p>
+                <h2>Scan equipment nameplate</h2>
+              </div>
+            </header>
+
+            <div id="camera-stage" class="camera-stage">
+              <div class="camera-live-view">
+                <div class="scan-corner scan-corner-top-left"></div>
+                <div class="scan-corner scan-corner-top-right"></div>
+                <div class="scan-corner scan-corner-bottom-left"></div>
+                <div class="scan-corner scan-corner-bottom-right"></div>
+                <div class="nameplate-preview" aria-hidden="true">
+                  <strong>DAIKIN</strong>
+                  <span>MODEL</span><b>RXYQ12TAYDU</b>
+                  <span>SERIAL</span><b>9K118042</b>
+                  <small>VRV outdoor unit</small>
+                </div>
+                <i class="scan-line" aria-hidden="true"></i>
+              </div>
+              <p>Center the equipment nameplate in the frame.</p>
+              <button id="scan-nameplate" class="scan-action" type="button">Scan nameplate</button>
+            </div>
+
+            <div id="scan-results" class="scan-results" hidden>
+              <div class="scan-success-mark" aria-hidden="true"></div>
+              <p class="scan-kicker">Nameplate read successfully</p>
+              <h3>RXYQ12TAYDU</h3>
+              <p class="scan-description">AIRUS matched this VRV outdoor unit and searched the technical knowledge repository.</p>
+              <dl class="scan-details">
+                <div><dt>Model</dt><dd>RXYQ12TAYDU</dd></div>
+                <div><dt>Serial</dt><dd>9K118042</dd></div>
+                <div><dt>Product</dt><dd>VRV outdoor unit</dd></div>
+              </dl>
+              <p class="scan-question-label">Ask about this unit</p>
+              <div class="scan-prompts">
+                <button type="button" data-nameplate-message="Find service information for RXYQ12TAYDU">Service information</button>
+                <button type="button" data-nameplate-message="What error codes apply to RXYQ12TAYDU?">Error codes</button>
+                <button type="button" data-nameplate-message="Find parts for RXYQ12TAYDU">Parts lookup</button>
+              </div>
+              <button id="scan-done" class="scan-done" type="button">Continue in assistant</button>
+            </div>
+          </section>
+
           <section id="source-viewer" class="source-viewer" aria-label="Source document preview" hidden>
             <div class="viewer-toolbar">
               <button id="viewer-back" class="viewer-back" type="button" aria-label="Back to response"></button>
