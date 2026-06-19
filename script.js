@@ -128,6 +128,7 @@ const cameraCancel = document.querySelector("#camera-cancel");
 const scanNameplate = document.querySelector("#scan-nameplate");
 const scanQuestionForm = document.querySelector("#scan-question-form");
 const scanQuestionInput = document.querySelector("#scan-question-input");
+const scanVoiceButton = document.querySelector(".scan-voice-button");
 const voiceButton = document.querySelector(".voice-button");
 const voiceStatus = document.querySelector("#voice-status");
 const chatPanel = document.querySelector(".chat-panel");
@@ -224,6 +225,11 @@ voiceButton.addEventListener("click", () => {
   const isListening = voiceButton.classList.toggle("listening");
   voiceStatus.hidden = !isListening;
   input.placeholder = isListening ? "Listening..." : "Ask anything";
+});
+
+scanVoiceButton.addEventListener("click", () => {
+  const isListening = scanVoiceButton.classList.toggle("listening");
+  scanQuestionInput.placeholder = isListening ? "Listening..." : "Ask about this unit";
 });
 
 cameraButton.addEventListener("click", () => {

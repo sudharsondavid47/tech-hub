@@ -468,7 +468,7 @@ body {
   background: #ffffff;
 }
 
-.scan-question-form button span {
+.scan-send-button span {
   position: absolute;
   top: 7px;
   left: 8px;
@@ -476,6 +476,45 @@ body {
   aspect-ratio: 1;
   background: var(--daikin-blue-dark);
   clip-path: polygon(4% 7%, 96% 50%, 4% 93%, 29% 55%, 4% 7%);
+}
+
+.scan-voice-button span {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  width: 7px;
+  height: 10px;
+  border: 1.5px solid var(--daikin-blue);
+  border-radius: 999px;
+}
+
+.scan-voice-button span::before {
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  width: 12px;
+  height: 8px;
+  border: 1.5px solid var(--daikin-blue);
+  border-top: 0;
+  border-radius: 0 0 999px 999px;
+  content: "";
+}
+
+.scan-voice-button span::after {
+  position: absolute;
+  bottom: -10px;
+  left: 2px;
+  width: 2px;
+  height: 4px;
+  content: "";
+  background: var(--daikin-blue);
+  box-shadow: -3px 4px 0 0 var(--daikin-blue), 3px 4px 0 0 var(--daikin-blue);
+}
+
+.scan-voice-button.listening {
+  border-color: var(--daikin-blue);
+  background: #eaf7fd;
+  box-shadow: 0 0 0 3px rgba(0, 151, 224, 0.14);
 }
 
 .assistant-hero {
