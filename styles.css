@@ -49,7 +49,7 @@ body {
   height: 6.2%;
   content: "";
   pointer-events: none;
-  background: var(--daikin-blue);
+  background: rgb(0 151 224);
 }
 
 .screen {
@@ -127,8 +127,10 @@ body {
   position: absolute;
   inset: 13.9% 0 11.4%;
   z-index: 6;
-  overflow: auto;
-  padding: 5% 4.2% 7%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 4.2% 4.2% 5%;
   background: linear-gradient(180deg, #f2fbfe 0%, #ffffff 45%);
 }
 
@@ -141,7 +143,8 @@ body {
   grid-template-columns: 32px minmax(0, 1fr);
   gap: 10px;
   align-items: center;
-  margin-bottom: 16px;
+  flex: 0 0 auto;
+  margin-bottom: 11px;
 }
 
 .camera-flow-header p,
@@ -193,7 +196,8 @@ body {
 .camera-live-view {
   position: relative;
   display: grid;
-  min-height: clamp(220px, 55vw, 282px);
+  min-height: 0;
+  flex: 1 1 auto;
   overflow: hidden;
   place-items: center;
   border-radius: 20px;
@@ -282,8 +286,15 @@ body {
   50% { transform: translateY(145px); }
 }
 
+.camera-stage {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
 .camera-stage > p {
-  margin: 13px 0 14px;
+  margin: 8px 0;
   color: #55717c;
   font-size: clamp(12px, 3.15vw, 15px);
   text-align: center;
@@ -292,7 +303,7 @@ body {
 .scan-action,
 .scan-done {
   width: 100%;
-  min-height: 45px;
+  min-height: 42px;
   border: 1px solid transparent;
   border-radius: 14px;
   color: #ffffff;
@@ -303,6 +314,10 @@ body {
 }
 
 .scan-results {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  padding-right: 2px;
   text-align: center;
 }
 
