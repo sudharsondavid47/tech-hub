@@ -54,11 +54,11 @@ body {
 
 .dynamic-island {
   position: absolute;
-  top: 1.75%;
+  top: 2.05%;
   left: 50%;
   z-index: 13;
-  width: 47%;
-  height: 3.65%;
+  width: 34%;
+  height: 3.15%;
   transform: translateX(-50%);
   border-radius: 999px;
   background: #000000;
