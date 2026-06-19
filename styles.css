@@ -824,9 +824,9 @@ body {
   z-index: 3;
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 54px;
-  padding: 7px 7px 7px 16px;
+  gap: 6px;
+  min-height: 56px;
+  padding: 7px 8px 7px 16px;
   border: 1px solid rgba(0, 158, 219, 0.22);
   border-radius: 19px;
   background: #ffffff;
@@ -851,43 +851,73 @@ body {
 .composer button {
   position: relative;
   flex: 0 0 auto;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #12364a;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid #d8e4e9;
+  border-radius: 13px;
+  background: #f3f8fa;
+  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
-.composer button[type="submit"] span {
+.composer button:active {
+  transform: scale(0.94);
+}
+
+.camera-button span {
   position: absolute;
+  width: 17px;
+  height: 13px;
+  border: 1.8px solid #316174;
+  border-radius: 4px;
+}
+
+.camera-button span::before {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  top: 50%;
-  width: 15px;
-  height: 15px;
-  transform: translate(-50%, -50%) rotate(45deg);
-  border-top: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
+  width: 5px;
+  height: 5px;
+  border: 1.7px solid #316174;
+  border-radius: 50%;
+  content: "";
+  transform: translate(-50%, -50%);
 }
 
-.composer button[type="submit"]::before {
-  content: "";
+.camera-button span::after {
   position: absolute;
-  left: 12px;
-  top: 50%;
-  width: 14px;
-  height: 2px;
-  transform: translateY(-50%) rotate(-45deg);
-  border-radius: 999px;
-  background: #ffffff;
+  top: -4px;
+  left: 3px;
+  width: 6px;
+  height: 3px;
+  border-radius: 2px 2px 0 0;
+  content: "";
+  background: #316174;
 }
 
 .composer .voice-button {
-  background: #eef5f8;
-  border: 1px solid #d5e2e8;
+  background: #f3f8fa;
+  border-color: #d8e4e9;
 }
 
 .composer .voice-button.listening {
   background: linear-gradient(135deg, var(--mint), var(--daikin-blue));
+  border-color: transparent;
   box-shadow: 0 0 0 4px rgba(25, 184, 166, 0.18);
+}
+
+.composer .send-button {
+  border-color: transparent;
+  background: linear-gradient(135deg, #008fca, #17ad9e);
+  box-shadow: 0 6px 13px rgba(0, 145, 198, 0.25);
+}
+
+.send-button span {
+  width: 17px;
+  aspect-ratio: 1;
+  background: #ffffff;
+  clip-path: polygon(4% 7%, 96% 50%, 4% 93%, 29% 55%, 4% 7%);
 }
 
 .voice-status {
@@ -935,11 +965,11 @@ body {
 .voice-button span {
   position: absolute;
   left: 50%;
-  top: 41%;
-  width: 9px;
-  height: 15px;
+  top: 40%;
+  width: 8px;
+  height: 13px;
   transform: translate(-50%, -50%);
-  border: 2px solid #12364a;
+  border: 1.8px solid #316174;
   border-radius: 999px;
 }
 
@@ -949,8 +979,8 @@ body {
   left: 50%;
   bottom: -8px;
   width: 15px;
-  height: 12px;
-  border: 2px solid #12364a;
+  height: 11px;
+  border: 1.8px solid #316174;
   border-top: 0;
   border-radius: 0 0 999px 999px;
   transform: translateX(-50%);
@@ -960,12 +990,12 @@ body {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -13px;
+  bottom: -12px;
   width: 2px;
-  height: 6px;
+  height: 5px;
   transform: translateX(-50%);
-  background: #12364a;
-  box-shadow: -4px 6px 0 0 #12364a, 4px 6px 0 0 #12364a;
+  background: #316174;
+  box-shadow: -4px 5px 0 0 #316174, 4px 5px 0 0 #316174;
 }
 
 .voice-button.listening span,

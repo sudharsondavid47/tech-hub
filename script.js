@@ -78,6 +78,7 @@ const sourceViewer = document.querySelector("#source-viewer");
 const viewerBack = document.querySelector("#viewer-back");
 const viewerTitle = document.querySelector("#viewer-title");
 const input = document.querySelector("#airus-input");
+const cameraButton = document.querySelector(".camera-button");
 const voiceButton = document.querySelector(".voice-button");
 const voiceStatus = document.querySelector("#voice-status");
 
@@ -158,6 +159,11 @@ voiceButton.addEventListener("click", () => {
   const isListening = voiceButton.classList.toggle("listening");
   voiceStatus.hidden = !isListening;
   input.placeholder = isListening ? "Listening..." : "Ask anything";
+});
+
+cameraButton.addEventListener("click", () => {
+  input.value = "Photo attached";
+  input.focus();
 });
 
 sourcesToggle.addEventListener("click", () => {
