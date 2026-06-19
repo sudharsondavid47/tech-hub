@@ -1,22 +1,22 @@
 const screens = {
   products: {
-    src: "../airus-ai-mockups/products-ai-tab.png",
+    src: "/airus-ai-mockups/products-ai-tab.png",
     alt: "Products screen",
   },
   error: {
-    src: "../airus-ai-mockups/error-code-ai-tab.png",
+    src: "/airus-ai-mockups/error-code-ai-tab.png",
     alt: "Error Code screen",
   },
   tools: {
-    src: "../airus-ai-mockups/tools-ai-tab.png",
+    src: "/airus-ai-mockups/tools-ai-tab.png",
     alt: "Tools screen",
   },
   bookmarks: {
-    src: "../airus-ai-mockups/bookmarks-ai-tab.png",
+    src: "/airus-ai-mockups/bookmarks-ai-tab.png",
     alt: "Bookmarks screen",
   },
   airus: {
-    src: "../airus-ai-mockups/airus-ai-module-screen.png",
+    src: "/airus-ai-mockups/airus-ai-module-screen.png",
     alt: "Daikin Technical Assistant screen",
   },
 };
